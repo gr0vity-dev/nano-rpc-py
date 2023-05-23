@@ -1,0 +1,6 @@
+.DS_Store
+_manage/
+**/__pycache__
+build/
+dist/
+nanorpc.egg-info/
