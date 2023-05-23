@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='nanorpc',
-    version='0.0.1',
+    version='0.0.2',
     packages=find_packages(),
     install_requires=['aiohttp', 'asyncio'],
     python_requires='>=3.7',
