@@ -28,7 +28,7 @@ Here's a basic example of how to use NanoRPC to interact with a Nano node:
 
 ```python
 import asyncio
-from nanorpc import NanoRpc, NodeVersion
+from nanorpc.client import NanoRpc, NodeVersion
 
 async def main():
     # Connect to a Nano node
