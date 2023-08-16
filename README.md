@@ -42,6 +42,11 @@ async def main():
     version_info = await rpc.version()
     print(f"Node version: {version_info}")
 
+    #pass mandatory input as args* and optional as kwargs*
+    account = "nano_3msc38fyn67pgio16dj586pdrceahtn75qgnx7fy19wscixrc8dbb3abhbw6"
+    account_info = await rpc.account_info(account, include_confirmed="true", representative="true", receivable="true", weight="true")
+    print(f"Account info: {account_info}")
+
 # Run the main function within an asyncio event loop
 asyncio.run(main())
 ```
