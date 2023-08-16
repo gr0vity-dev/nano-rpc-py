@@ -13,8 +13,8 @@ COMMANDS = {
         "optional": []
     },
     "account_history": {
-        "required": ["account", "count"],
-        "optional": ["raw", "head", "offset", "reverse", "account_filter"]
+        "required": ["account", ],
+        "optional": ["count", "raw", "head", "offset", "reverse", "account_filter"]
     },
     "account_key": {
         "required": ["account"],
