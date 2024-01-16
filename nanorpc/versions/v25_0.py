@@ -6,7 +6,7 @@
 ### Changed Commands
 # accounts_balances (added optional 'include_only_confirmed')
 
-CHANGES = {
+COMMANDS = {
     "accounts_balances": {
         "required": ["accounts"],
         "optional": ["include_only_confirmed"]

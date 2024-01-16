@@ -1,5 +1,5 @@
 from asyncio import TimeoutError, sleep as aio_sleep
-from .versions.handler import NodeVersion, COMMANDS_BASE, COMMANDS_CHANGES
+from .versions.handler import NodeVersion, get_commands_for_version
 from aiohttp import ClientSession, TCPConnector, ClientConnectorError, BasicAuth
 
 
@@ -43,15 +43,8 @@ class NanoRpc:
         self.auth = BasicAuth(username,
                               password) if username and password else None
         self.session = None
-        self.commands = self._set_commands(node_version)
+        self.commands = get_commands_for_version(node_version)
         self._generate_methods()
-
-    def _set_commands(self, selected_version):
-        commands = COMMANDS_BASE.copy()
-        for version in sorted(NodeVersion):
-            if version <= selected_version:
-                commands.update(COMMANDS_CHANGES[version])  # Apply changes
-        return commands
 
     def _generate_methods(self):
         for command, params in self.commands.items():

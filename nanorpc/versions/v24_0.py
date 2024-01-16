@@ -21,7 +21,7 @@
 # ledger (added optional 'receivable')
 # wallet_ledger (added optional 'receivable')
 
-CHANGES = {
+COMMANDS = {
     "account_info": {
         "required": ["account"],
         "optional": [

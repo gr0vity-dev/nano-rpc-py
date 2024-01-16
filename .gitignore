@@ -4,3 +4,4 @@ _manage/
 build/
 dist/
 nanorpc.egg-info/
+debug.py
