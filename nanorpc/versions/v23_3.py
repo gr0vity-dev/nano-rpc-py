@@ -233,7 +233,7 @@ COMMANDS = {
     },
     "telemetry": {
         "required": [],
-        "optional": []
+        "optional": ["raw", "address", "port"]
     },
     "validate_account_number": {
         "required": ["account"],
