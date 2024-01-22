@@ -184,8 +184,8 @@ COMMANDS = {
         "optional": ["peer_details"]
     },
     "process": {
-        "required": ["json_block", "block"],
-        "optional": ["force", "subtype", "json_block", "watch_work", "async"]
+        "required": ["block"],
+        "optional": ["force", "subtype", "json_block", "async"]
     },
     "pending": {
         "required": ["account", "count"],
