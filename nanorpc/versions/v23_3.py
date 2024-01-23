@@ -117,7 +117,7 @@ COMMANDS = {
         "optional": ["hash"]
     },
     "confirmation_info": {
-        "required": ["json_block", "root"],
+        "required": ["root"],
         "optional": ["contents", "json_block", "representatives"]
     },
     "confirmation_quorum": {
@@ -149,8 +149,8 @@ COMMANDS = {
         "optional": []
     },
     "frontiers": {
-        "required": ["account", "count"],
-        "optional": []
+        "required": ["account"],
+        "optional": ["count"]
     },
     "keepalive": {
         "required": ["address", "port"],
@@ -188,7 +188,7 @@ COMMANDS = {
         "optional": ["force", "subtype", "json_block", "async"]
     },
     "pending": {
-        "required": ["account", "count"],
+        "required": ["account"],
         "optional": [
             "count", "threshold", "source", "include_active", "min_version",
             "sorting", "include_only_confirmed"
@@ -211,9 +211,8 @@ COMMANDS = {
         "optional": ["sources", "destinations"]
     },
     "sign": {
-        "required": ["json_block", "key", "block"],
-        "requiredAlternative": ["hash"],
-        "optional": []
+        "required": [],
+        "optional": ["key", "wallet", "block", "hash", "json_block"]
     },
     "stats": {
         "required": ["type"],
@@ -244,20 +243,20 @@ COMMANDS = {
         "optional": []
     },
     "unchecked": {
-        "required": ["json_block", "count"],
-        "optional": []
+        "required": ["count"],
+        "optional": ["json_block"]
     },
     "unchecked_clear": {
         "required": [],
         "optional": []
     },
     "unchecked_get": {
-        "required": ["json_block", "hash"],
-        "optional": []
+        "required": ["hash"],
+        "optional": ["json_block",]
     },
     "unchecked_keys": {
-        "required": ["json_block", "key", "count"],
-        "optional": []
+        "required": ["key", "count"],
+        "optional": ["json_block",]
     },
     "unopened": {
         "required": ["account", "count"],

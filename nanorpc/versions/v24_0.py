@@ -1,4 +1,4 @@
-### Deprecated Commands
+# Deprecated Commands
 # accounts_pending
 # pending
 # pending_exists
@@ -6,7 +6,7 @@
 # search_pending_all
 # wallet_pending
 
-### New Commands
+# New Commands
 # populate_backlog
 # accounts_receivable   (replaces accounts_pending)
 # receivable            (replaces pending)
@@ -15,7 +15,7 @@
 # search_receivable_all (replaces search_pending_all)
 # wallet_receivable     (replaces wallet_pending)
 
-### Changed Commands
+# Changed Commands
 # account_info (added optional 'receivable')
 # blocks_info (added optional 'receivable')
 # ledger (added optional 'receivable')
@@ -30,8 +30,7 @@ COMMANDS = {
         ]
     },
     "accounts_pending": {
-        "deprecated":
-        True,
+        "deprecated": True,
         "required": ["accounts", "count"],
         "optional": [
             "threshold", "source", "include_active", "sorting",
@@ -78,7 +77,7 @@ COMMANDS = {
         "optional": []
     },
     "receivable": {
-        "required": ["account", "count"],
+        "required": ["account"],
         "optional": [
             "count", "threshold", "source", "include_active", "min_version",
             "sorting", "include_only_confirmed", "offset"
