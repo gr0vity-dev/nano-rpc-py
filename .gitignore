@@ -5,3 +5,4 @@ build/
 dist/
 nanorpc.egg-info/
 debug**.py
+**_signatures.py

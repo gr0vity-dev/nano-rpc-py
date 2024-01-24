@@ -38,6 +38,13 @@ COMMANDS = {
         "required": ["hash"],
         "optional": ["json_block"]
     },
+    "blocks_info": {
+        "required": ["hashes"],
+        "optional": [
+            "json_block", "receivable", "pending", "source", "receive_hash",
+            "include_not_found"
+        ]
+    },
     "process": {
         "required": ["block"],
         "optional": ["force", "subtype", "json_block", "async"]

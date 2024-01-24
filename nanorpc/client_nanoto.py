@@ -30,6 +30,9 @@ class NanoToRpcTyped:
     async def block_info(self, hash, json_block=None):
         return await self.rpc.block_info(hash, json_block=json_block)
 
+    async def blocks_info(self, hashes, json_block=None, receivable=None, pending=None, source=None, receive_hash=None, include_not_found=None):
+        return await self.rpc.blocks_info(hashes, json_block=json_block, receivable=receivable, pending=pending, source=source, receive_hash=receive_hash, include_not_found=include_not_found)
+
     async def process(self, block, force=None, subtype=None, json_block=None, async_=None):
         return await self.rpc.process(block, force=force, subtype=subtype, json_block=json_block, async_=async_)
 
