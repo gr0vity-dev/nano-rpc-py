@@ -1,5 +1,4 @@
 from nanorpc.client_dynamic import NanoRpc, NodeVersion
-from nanorpc.versions.handler import get_methods_for_version
 
 
 class NanoRpcTyped:

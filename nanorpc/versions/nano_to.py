@@ -94,8 +94,8 @@ COMMANDS = {
         "optional": []
     },
     "checkout": {
-        "required": ["title", "notify", "webhook"],
-        "optional": []
+        "required": ["address"],
+        "optional": ["amount", "title", "webhook", "notify"]
     },
     "market_data": {
         "required": [],

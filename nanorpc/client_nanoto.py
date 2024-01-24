@@ -69,8 +69,8 @@ class NanoToRpcTyped:
     async def update_name(self, name):
         return await self.rpc.update_name(name)
 
-    async def checkout(self, title, notify, webhook):
-        return await self.rpc.checkout(title, notify, webhook)
+    async def checkout(self, address, amount=None, title=None, webhook=None, notify=None):
+        return await self.rpc.checkout(address, amount=amount, title=title, webhook=webhook, notify=notify)
 
     async def market_data(self, ):
         return await self.rpc.market_data()
