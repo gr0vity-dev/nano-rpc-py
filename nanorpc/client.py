@@ -340,3 +340,6 @@ class NanoRpcTyped:
 
     async def wallet_receivable(self, wallet, count=None, threshold=None, source=None):
         return await self.rpc.wallet_receivable(wallet, count=count, threshold=threshold, source=source)
+
+    async def active_difficulty(self):
+        return await self.rpc.active_difficulty()
