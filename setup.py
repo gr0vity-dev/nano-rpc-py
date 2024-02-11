@@ -5,9 +5,9 @@ with open("README.md", "r") as fh:
 
 setup(
     name='nanorpc',
-    version='0.0.9',
+    version='0.0.10',
     packages=find_packages(),
-    install_requires=['aiohttp', 'asyncio'],
+    install_requires=['aiohttp', 'asyncio', 'nano-lib-py'],
     python_requires='>=3.7',
     author='gr0vity',
     url="https://github.com/gr0vity-dev/nanomock",
@@ -23,5 +23,7 @@ setup(
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
     ],
 )
