@@ -12,6 +12,7 @@ class NodeVersion(IntEnum):
     V25_0 = 3  # v25_0.py
     V25_1 = 4  # no changes
     V26_0 = 5  # no changes
+    V26_1 = 6  # no changes
 
 
 def get_commands_for_version(node_version):
