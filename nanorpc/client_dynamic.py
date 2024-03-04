@@ -56,11 +56,13 @@ class NanoRpc:
                  password=None,
                  auth_key=None,
                  app_name=None,
-                 app_email=None):
+                 app_email=None,
+                 wrap_json=False):
         self.url = url
         self.username = username
         self.password = password
         self.max_retries = max_retries
+        self.wrap_json = wrap_json
         self.auth = BasicAuth(username,
                               password) if username and password else None
         self.headers = self._set_headers(auth_key, app_name, app_email)
@@ -73,7 +75,7 @@ class NanoRpc:
         if app_name:
             headers["nano-app"] = app_name
         if app_email:
-            headers["nano-app-admi"] = app_email
+            headers["nano-app-admin"] = app_email
         return headers
 
     def _generate_methods(self):
@@ -104,7 +106,14 @@ class NanoRpc:
     async def _request(self, payloads):
         async with ClientSession(auth=self.auth) as session:
             async with session.post(self.url, json=payloads[0], headers=self.headers) as response:
-                return await response.json()
+                response_data = await response.json()
+                if self.wrap_json and not isinstance(response_data, dict):
+                    # Wrap the response data in a JSON structure
+                    response_data = {
+                        "msg": response_data,
+                        "error": "wrapped into valid json"
+                    }
+                return response_data
 
     async def process_payloads(self, payloads):
         return await self._request_with_retry(self._request, payloads)
