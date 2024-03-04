@@ -2,9 +2,9 @@ from nanorpc.client_dynamic import NanoRpc, NodeVersion
 
 
 class NanoToRpcTyped:
-    def __init__(self, auth_key, app_name="nanoto_python_lib", app_email=None):
+    def __init__(self, auth_key, app_name="nanoto_python_lib", app_email=None, wrap_json=False):
         self.rpc = NanoRpc(url="https://rpc.nano.to",
-                           auth_key=auth_key, app_name=app_name, app_email=app_email, node_version=NodeVersion.NANO_TO)
+                           auth_key=auth_key, app_name=app_name, app_email=app_email, node_version=NodeVersion.NANO_TO, wrap_json=wrap_json)
 
     async def version(self, ):
         return await self.rpc.version()

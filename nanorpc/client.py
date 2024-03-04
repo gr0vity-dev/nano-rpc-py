@@ -2,10 +2,10 @@ from nanorpc.client_dynamic import NanoRpc, NodeVersion
 
 
 class NanoRpcTyped:
-    def __init__(self, url, username=None, password=None):
+    def __init__(self, url, username=None, password=None, wrap_json=False):
         #
         self.rpc = NanoRpc(url=url, username=username,
-                           password=password, node_version=NodeVersion.V25_1)
+                           password=password, node_version=NodeVersion.V25_1, wrap_json=wrap_json)
 
     async def account_balance(self, account):
         return await self.rpc.account_balance(account)
