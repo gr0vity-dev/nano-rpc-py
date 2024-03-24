@@ -85,6 +85,10 @@ COMMANDS = {
         "required": [],
         "optional": []
     },
+    "aliases": {
+        "required": [],
+        "optional": []
+    },
     "get_name": {
         "required": ["name"],
         "optional": []

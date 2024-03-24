@@ -63,6 +63,9 @@ class NanoToRpcTyped:
     async def known(self, ):
         return await self.rpc.known()
 
+    async def aliases(self, ):
+        return await self.rpc.aliases()
+
     async def get_name(self, name):
         return await self.rpc.get_name(name)
 

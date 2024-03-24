@@ -3,8 +3,8 @@ from nanorpc.versions.handler import NodeVersion, get_commands_for_version
 
 
 # This script creates the resulting typed python signatures form the  COMMANDS = { ... }
-# Modify Nodeversion
 
+# MODIFY NODE_VERSION HERE
 NODE_VERSION = NodeVersion.NANO_TO
 
 
