@@ -1,7 +1,7 @@
 COMMANDS = {
     "account_balance": {
         "required": ["account"],
-        "optional": []
+        "optional": ["include_only_confirmed"]
     },
     "account_info": {
         "required": ["account"],
@@ -375,7 +375,7 @@ COMMANDS = {
     },
     "wallet_create": {
         "required": [],
-        "optional": []
+        "optional": ["seed"]
     },
     "wallet_destroy": {
         "required": ["wallet"],

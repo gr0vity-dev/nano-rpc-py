@@ -7,8 +7,8 @@ class NanoRpcTyped:
         self.rpc = NanoRpc(url=url, username=username,
                            password=password, node_version=NodeVersion.V25_1, wrap_json=wrap_json)
 
-    async def account_balance(self, account):
-        return await self.rpc.account_balance(account)
+    async def account_balance(self, account, include_only_confirmed=True):
+        return await self.rpc.account_balance(account, include_only_confirmed=include_only_confirmed)
 
     async def account_info(self, account, representative=None, weight=None, receivable=None, pending=None, include_confirmed=None):
         return await self.rpc.account_info(account, representative=representative, weight=weight, receivable=receivable, pending=pending, include_confirmed=include_confirmed)
@@ -272,8 +272,8 @@ class NanoRpcTyped:
     async def wallet_contains(self, wallet, account):
         return await self.rpc.wallet_contains(wallet, account)
 
-    async def wallet_create(self, ):
-        return await self.rpc.wallet_create()
+    async def wallet_create(self, seed=None):
+        return await self.rpc.wallet_create(seed=seed)
 
     async def wallet_destroy(self, wallet):
         return await self.rpc.wallet_destroy(wallet)
