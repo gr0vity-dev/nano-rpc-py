@@ -178,8 +178,8 @@ class NanoRpcTyped:
     async def peers(self, peer_details=None):
         return await self.rpc.peers(peer_details=peer_details)
 
-    async def pending(self, account, count, count=None, threshold=None, source=None, include_active=None, min_version=None, sorting=None, include_only_confirmed=None):
-        return await self.rpc.pending(account, count, count=count, threshold=threshold, source=source, include_active=include_active, min_version=min_version, sorting=sorting, include_only_confirmed=include_only_confirmed)
+    async def pending(self, account, count=None, threshold=None, source=None, include_active=None, min_version=None, sorting=None, include_only_confirmed=None):
+        return await self.rpc.pending(account, count=count, threshold=threshold, source=source, include_active=include_active, min_version=min_version, sorting=sorting, include_only_confirmed=include_only_confirmed)
 
     async def pending_exists(self, hash, include_active=None, include_only_confirmed=None):
         return await self.rpc.pending_exists(hash, include_active=include_active, include_only_confirmed=include_only_confirmed)

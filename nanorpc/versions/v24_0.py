@@ -61,7 +61,7 @@ COMMANDS = {
     "pending": {
         "deprecated":
         True,
-        "required": ["account", "count"],
+        "required": ["account"],
         "optional": [
             "count", "threshold", "source", "include_active", "min_version",
             "sorting", "include_only_confirmed"
