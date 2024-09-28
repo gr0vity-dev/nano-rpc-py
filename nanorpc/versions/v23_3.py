@@ -3,6 +3,10 @@ COMMANDS = {
         "required": ["account"],
         "optional": ["include_only_confirmed"]
     },
+    "account_block_count": {
+        "required": ["account"],
+        "optional": []
+    },
     "account_info": {
         "required": ["account"],
         "optional":

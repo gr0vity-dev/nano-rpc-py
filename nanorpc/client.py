@@ -10,8 +10,11 @@ class NanoRpcTyped:
     async def account_balance(self, account, include_only_confirmed=True):
         return await self.rpc.account_balance(account, include_only_confirmed=include_only_confirmed)
 
-    async def account_info(self, account, representative=None, weight=None, receivable=None, pending=None, include_confirmed=None):
-        return await self.rpc.account_info(account, representative=representative, weight=weight, receivable=receivable, pending=pending, include_confirmed=include_confirmed)
+    async def account_block_count(self, account):
+        return await self.rpc.account_block_count(account)
+
+    async def account_create(self, wallet, index=None, work=None):
+        return await self.rpc.account_create(wallet, index=index, work=work)
 
     async def account_get(self, key):
         return await self.rpc.account_get(key)
@@ -19,11 +22,26 @@ class NanoRpcTyped:
     async def account_history(self, account, count=None, raw=None, head=None, offset=None, reverse=None, account_filter=None):
         return await self.rpc.account_history(account, count=count, raw=raw, head=head, offset=offset, reverse=reverse, account_filter=account_filter)
 
+    async def account_info(self, account, representative=None, weight=None, receivable=None, pending=None, include_confirmed=None):
+        return await self.rpc.account_info(account, representative=representative, weight=weight, receivable=receivable, pending=pending, include_confirmed=include_confirmed)
+
     async def account_key(self, account):
         return await self.rpc.account_key(account)
 
+    async def account_list(self, wallet):
+        return await self.rpc.account_list(wallet)
+
+    async def account_move(self, wallet, source, accounts):
+        return await self.rpc.account_move(wallet, source, accounts)
+
+    async def account_remove(self, wallet, account):
+        return await self.rpc.account_remove(wallet, account)
+
     async def account_representative(self, account):
         return await self.rpc.account_representative(account)
+
+    async def account_representative_set(self, wallet, account, representative, work=None):
+        return await self.rpc.account_representative_set(wallet, account, representative, work=work)
 
     async def account_weight(self, account):
         return await self.rpc.account_weight(account)
@@ -31,11 +49,23 @@ class NanoRpcTyped:
     async def accounts_balances(self, accounts, include_only_confirmed=None):
         return await self.rpc.accounts_balances(accounts, include_only_confirmed=include_only_confirmed)
 
+    async def accounts_create(self, wallet, count, work=None):
+        return await self.rpc.accounts_create(wallet, count, work=work)
+
     async def accounts_frontiers(self, accounts):
         return await self.rpc.accounts_frontiers(accounts)
 
+    async def accounts_pending(self, accounts, count, threshold=None, source=None, include_active=None, sorting=None, include_only_confirmed=None):
+        return await self.rpc.accounts_pending(accounts, count, threshold=threshold, source=source, include_active=include_active, sorting=sorting, include_only_confirmed=include_only_confirmed)
+
+    async def accounts_receivable(self, accounts, count, threshold=None, source=None, include_active=None, sorting=None, include_only_confirmed=None):
+        return await self.rpc.accounts_receivable(accounts, count, threshold=threshold, source=source, include_active=include_active, sorting=sorting, include_only_confirmed=include_only_confirmed)
+
     async def accounts_representatives(self, accounts):
         return await self.rpc.accounts_representatives(accounts)
+
+    async def active_difficulty(self, include_trend=None):
+        return await self.rpc.active_difficulty(include_trend=include_trend)
 
     async def available_supply(self, ):
         return await self.rpc.available_supply()
@@ -82,9 +112,6 @@ class NanoRpcTyped:
     async def confirmation_active(self, announcements=None):
         return await self.rpc.confirmation_active(announcements=announcements)
 
-    async def confirmation_height_currently_processing(self, ):
-        return await self.rpc.confirmation_height_currently_processing()
-
     async def confirmation_history(self, hash=None):
         return await self.rpc.confirmation_history(hash=hash)
 
@@ -105,6 +132,9 @@ class NanoRpcTyped:
 
     async def deterministic_key(self, seed, index):
         return await self.rpc.deterministic_key(seed, index)
+
+    async def election_statistics(self, ):
+        return await self.rpc.election_statistics()
 
     async def epoch_upgrade(self, epoch, key, count=None, threads=None):
         return await self.rpc.epoch_upgrade(epoch, key, count=count, threads=threads)
@@ -127,17 +157,56 @@ class NanoRpcTyped:
     async def ledger(self, account, count, representative=None, weight=None, receivable=None, pending=None, modified_since=None, sorting=None, threshold=None):
         return await self.rpc.ledger(account, count, representative=representative, weight=weight, receivable=receivable, pending=pending, modified_since=modified_since, sorting=sorting, threshold=threshold)
 
+    async def nano_to_raw(self, amount):
+        return await self.rpc.nano_to_raw(amount)
+
     async def node_id(self, ):
         return await self.rpc.node_id()
 
     async def node_id_delete(self, ):
         return await self.rpc.node_id_delete()
 
+    async def password_change(self, wallet, password):
+        return await self.rpc.password_change(wallet, password)
+
+    async def password_enter(self, wallet, password):
+        return await self.rpc.password_enter(wallet, password)
+
+    async def password_valid(self, wallet):
+        return await self.rpc.password_valid(wallet)
+
     async def peers(self, peer_details=None):
         return await self.rpc.peers(peer_details=peer_details)
 
+    async def pending(self, account, count, count=None, threshold=None, source=None, include_active=None, min_version=None, sorting=None, include_only_confirmed=None):
+        return await self.rpc.pending(account, count, count=count, threshold=threshold, source=source, include_active=include_active, min_version=min_version, sorting=sorting, include_only_confirmed=include_only_confirmed)
+
+    async def pending_exists(self, hash, include_active=None, include_only_confirmed=None):
+        return await self.rpc.pending_exists(hash, include_active=include_active, include_only_confirmed=include_only_confirmed)
+
+    async def populate_backlog(self, ):
+        return await self.rpc.populate_backlog()
+
     async def process(self, block, force=None, subtype=None, json_block=None, async_=None):
         return await self.rpc.process(block, force=force, subtype=subtype, json_block=json_block, async_=async_)
+
+    async def raw_to_nano(self, amount):
+        return await self.rpc.raw_to_nano(amount)
+
+    async def receivable(self, account, count=None, threshold=None, source=None, include_active=None, min_version=None, sorting=None, include_only_confirmed=None, offset=None):
+        return await self.rpc.receivable(account, count=count, threshold=threshold, source=source, include_active=include_active, min_version=min_version, sorting=sorting, include_only_confirmed=include_only_confirmed, offset=offset)
+
+    async def receivable_exists(self, hash, include_active=None, include_only_confirmed=None):
+        return await self.rpc.receivable_exists(hash, include_active=include_active, include_only_confirmed=include_only_confirmed)
+
+    async def receive(self, wallet, account, block):
+        return await self.rpc.receive(wallet, account, block)
+
+    async def receive_minimum(self, ):
+        return await self.rpc.receive_minimum()
+
+    async def receive_minimum_set(self, amount):
+        return await self.rpc.receive_minimum_set(amount)
 
     async def representatives(self, count=None, sorting=None):
         return await self.rpc.representatives(count=count, sorting=sorting)
@@ -147,6 +216,21 @@ class NanoRpcTyped:
 
     async def republish(self, hash, sources=None, destinations=None):
         return await self.rpc.republish(hash, sources=sources, destinations=destinations)
+
+    async def search_pending(self, wallet):
+        return await self.rpc.search_pending(wallet)
+
+    async def search_pending_all(self, ):
+        return await self.rpc.search_pending_all()
+
+    async def search_receivable(self, wallet):
+        return await self.rpc.search_receivable(wallet)
+
+    async def search_receivable_all(self, ):
+        return await self.rpc.search_receivable_all()
+
+    async def send(self, wallet, source, destination, amount, id=None, work=None):
+        return await self.rpc.send(wallet, source, destination, amount, id=id, work=work)
 
     async def sign_hash(self, hash):
         return await self._sign(hash=hash)
@@ -176,12 +260,6 @@ class NanoRpcTyped:
     async def telemetry(self, raw=None, address=None, port=None):
         return await self.rpc.telemetry(raw=raw, address=address, port=port)
 
-    async def validate_account_number(self, account):
-        return await self.rpc.validate_account_number(account)
-
-    async def version(self, ):
-        return await self.rpc.version()
-
     async def unchecked(self, count, json_block=None):
         return await self.rpc.unchecked(count, json_block=json_block)
 
@@ -200,62 +278,11 @@ class NanoRpcTyped:
     async def uptime(self, ):
         return await self.rpc.uptime()
 
-    async def work_cancel(self, hash):
-        return await self.rpc.work_cancel(hash)
+    async def validate_account_number(self, account):
+        return await self.rpc.validate_account_number(account)
 
-    async def work_generate(self, hash, use_peers=None, difficulty=None, multiplier=None, account=None, version=None, block=None, json_block=None):
-        return await self.rpc.work_generate(hash, use_peers=use_peers, difficulty=difficulty, multiplier=multiplier, account=account, version=version, block=block, json_block=json_block)
-
-    async def work_peer_add(self, address, port):
-        return await self.rpc.work_peer_add(address, port)
-
-    async def work_peers(self, ):
-        return await self.rpc.work_peers()
-
-    async def work_peers_clear(self, ):
-        return await self.rpc.work_peers_clear()
-
-    async def work_validate(self, work, hash, difficulty=None, multiplier=None, version=None):
-        return await self.rpc.work_validate(work, hash, difficulty=difficulty, multiplier=multiplier, version=version)
-
-    async def account_create(self, wallet, index=None, work=None):
-        return await self.rpc.account_create(wallet, index=index, work=work)
-
-    async def account_list(self, wallet):
-        return await self.rpc.account_list(wallet)
-
-    async def account_move(self, wallet, source, accounts):
-        return await self.rpc.account_move(wallet, source, accounts)
-
-    async def account_remove(self, wallet, account):
-        return await self.rpc.account_remove(wallet, account)
-
-    async def account_representative_set(self, wallet, account, representative, work=None):
-        return await self.rpc.account_representative_set(wallet, account, representative, work=work)
-
-    async def accounts_create(self, wallet, count, work=None):
-        return await self.rpc.accounts_create(wallet, count, work=work)
-
-    async def password_change(self, wallet, password):
-        return await self.rpc.password_change(wallet, password)
-
-    async def password_enter(self, wallet, password):
-        return await self.rpc.password_enter(wallet, password)
-
-    async def password_valid(self, wallet):
-        return await self.rpc.password_valid(wallet)
-
-    async def receive(self, wallet, account, block):
-        return await self.rpc.receive(wallet, account, block)
-
-    async def receive_minimum(self, ):
-        return await self.rpc.receive_minimum()
-
-    async def receive_minimum_set(self, amount):
-        return await self.rpc.receive_minimum_set(amount)
-
-    async def send(self, wallet, source, destination, amount, id=None, work=None):
-        return await self.rpc.send(wallet, source, destination, amount, id=id, work=work)
+    async def version(self, ):
+        return await self.rpc.version()
 
     async def wallet_add(self, wallet, key, work=None):
         return await self.rpc.wallet_add(wallet, key, work=work)
@@ -296,6 +323,12 @@ class NanoRpcTyped:
     async def wallet_lock(self, wallet):
         return await self.rpc.wallet_lock(wallet)
 
+    async def wallet_pending(self, wallet, count=None, threshold=None, source=None):
+        return await self.rpc.wallet_pending(wallet, count=count, threshold=threshold, source=source)
+
+    async def wallet_receivable(self, wallet, count=None, threshold=None, source=None):
+        return await self.rpc.wallet_receivable(wallet, count=count, threshold=threshold, source=source)
+
     async def wallet_representative(self, wallet):
         return await self.rpc.wallet_representative(wallet)
 
@@ -308,38 +341,26 @@ class NanoRpcTyped:
     async def wallet_work_get(self, wallet):
         return await self.rpc.wallet_work_get(wallet)
 
+    async def work_cancel(self, hash):
+        return await self.rpc.work_cancel(hash)
+
+    async def work_generate(self, hash, use_peers=None, difficulty=None, multiplier=None, account=None, version=None, block=None, json_block=None):
+        return await self.rpc.work_generate(hash, use_peers=use_peers, difficulty=difficulty, multiplier=multiplier, account=account, version=version, block=block, json_block=json_block)
+
     async def work_get(self, wallet):
         return await self.rpc.work_get(wallet)
+
+    async def work_peer_add(self, address, port):
+        return await self.rpc.work_peer_add(address, port)
+
+    async def work_peers(self, ):
+        return await self.rpc.work_peers()
+
+    async def work_peers_clear(self, ):
+        return await self.rpc.work_peers_clear()
 
     async def work_set(self, wallet, account, work):
         return await self.rpc.work_set(wallet, account, work)
 
-    async def nano_to_raw(self, amount):
-        return await self.rpc.nano_to_raw(amount)
-
-    async def raw_to_nano(self, amount):
-        return await self.rpc.raw_to_nano(amount)
-
-    async def accounts_receivable(self, accounts, count, threshold=None, source=None, include_active=None, sorting=None, include_only_confirmed=None):
-        return await self.rpc.accounts_receivable(accounts, count, threshold=threshold, source=source, include_active=include_active, sorting=sorting, include_only_confirmed=include_only_confirmed)
-
-    async def populate_backlog(self, ):
-        return await self.rpc.populate_backlog()
-
-    async def receivable(self, account, count=None, threshold=None, source=None, include_active=None, min_version=None, sorting=None, include_only_confirmed=None, offset=None):
-        return await self.rpc.receivable(account, count=count, threshold=threshold, source=source, include_active=include_active, min_version=min_version, sorting=sorting, include_only_confirmed=include_only_confirmed, offset=offset)
-
-    async def receivable_exists(self, hash, include_active=None, include_only_confirmed=None):
-        return await self.rpc.receivable_exists(hash, include_active=include_active, include_only_confirmed=include_only_confirmed)
-
-    async def search_receivable(self, wallet):
-        return await self.rpc.search_receivable(wallet)
-
-    async def search_receivable_all(self, ):
-        return await self.rpc.search_receivable_all()
-
-    async def wallet_receivable(self, wallet, count=None, threshold=None, source=None):
-        return await self.rpc.wallet_receivable(wallet, count=count, threshold=threshold, source=source)
-
-    async def active_difficulty(self):
-        return await self.rpc.active_difficulty()
+    async def work_validate(self, work, hash, difficulty=None, multiplier=None, version=None):
+        return await self.rpc.work_validate(work, hash, difficulty=difficulty, multiplier=multiplier, version=version)
