@@ -41,7 +41,6 @@ def get_commands_for_version(node_version: NodeVersion) -> Dict[str, Any]:
     for version in NodeVersion:
         if version > node_version:
             continue
-
         module = _import_version_module(version)
         _update_commands(commands, module)
 

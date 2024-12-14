@@ -20,7 +20,7 @@ COMMANDS = {
         "optional": []
     },
     "pruned_exists": {
-        "required": [],
+        "required": ["hash"],
         "optional": []
     },
     "wallet_unlock": {  # same as password_enter

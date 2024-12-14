@@ -5,13 +5,16 @@ class NanoRpcTyped:
     def __init__(self, url, username=None, password=None, wrap_json=False):
         #
         self.rpc = NanoRpc(url=url, username=username,
-                           password=password, node_version=NodeVersion.V25_1, wrap_json=wrap_json)
+                           password=password, node_version=NodeVersion.V27_1, wrap_json=wrap_json)
 
     async def account_balance(self, account, include_only_confirmed=True):
         return await self.rpc.account_balance(account, include_only_confirmed=include_only_confirmed)
 
     async def account_block_count(self, account):
         return await self.rpc.account_block_count(account)
+
+    async def account_count(self):
+        return await self.rpc.account_count()
 
     async def account_create(self, wallet, index=None, work=None):
         return await self.rpc.account_create(wallet, index=index, work=work)
@@ -70,6 +73,9 @@ class NanoRpcTyped:
     async def available_supply(self, ):
         return await self.rpc.available_supply()
 
+    async def block(self, hash, json_block=None):
+        return await self.rpc.block(hash, json_block=json_block)
+
     async def block_account(self, hash):
         return await self.rpc.block_account(hash)
 
@@ -123,6 +129,9 @@ class NanoRpcTyped:
 
     async def database_txn_tracker(self, min_read_time, min_write_time):
         return await self.rpc.database_txn_tracker(min_read_time, min_write_time)
+
+    async def debug_bootstrap_priority_info(self, ):
+        return await self.rpc.debug_bootstrap_priority_info()
 
     async def delegators(self, account, threshold=None, count=None, start=None):
         return await self.rpc.delegators(account, threshold=threshold, count=count, start=start)
@@ -189,6 +198,9 @@ class NanoRpcTyped:
 
     async def process(self, block, force=None, subtype=None, json_block=None, async_=None):
         return await self.rpc.process(block, force=force, subtype=subtype, json_block=json_block, async_=async_)
+
+    async def pruned_exists(self, hash):
+        return await self.rpc.pruned_exists(hash)
 
     async def raw_to_nano(self, amount):
         return await self.rpc.raw_to_nano(amount)
@@ -290,6 +302,9 @@ class NanoRpcTyped:
     async def wallet_add_watch(self, wallet, accounts):
         return await self.rpc.wallet_add_watch(wallet, accounts)
 
+    async def wallet_balance_total(self, wallet):
+        return await self.rpc.wallet_balance_total(wallet)
+
     async def wallet_balances(self, wallet, threshold=None):
         return await self.rpc.wallet_balances(wallet, threshold=threshold)
 
@@ -317,6 +332,9 @@ class NanoRpcTyped:
     async def wallet_info(self, wallet):
         return await self.rpc.wallet_info(wallet)
 
+    async def wallet_key_valid(self, wallet):
+        return await self.rpc.wallet_key_valid(wallet)
+
     async def wallet_ledger(self, wallet, representative=None, weight=None, receivable=None, pending=None):
         return await self.rpc.wallet_ledger(wallet, representative=representative, weight=weight, receivable=receivable, pending=pending)
 
@@ -337,6 +355,9 @@ class NanoRpcTyped:
 
     async def wallet_republish(self, wallet, count=None):
         return await self.rpc.wallet_republish(wallet, count=count)
+
+    async def wallet_unlock(self, wallet, password):
+        return await self.rpc.wallet_unlock(wallet, password)
 
     async def wallet_work_get(self, wallet):
         return await self.rpc.wallet_work_get(wallet)

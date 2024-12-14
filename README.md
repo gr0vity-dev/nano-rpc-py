@@ -28,11 +28,11 @@ Here's a basic example of how to use NanoRPC to interact with a Nano node:
 
 ```python
 import asyncio
-from nanorpc.client import NanoRpc, NodeVersion
+from nanorpc.client import NanoRpcTyped
 
 async def main():
     # Connect to a Nano node
-    rpc = NanoRpc(url='http://localhost:7076', node_version=NodeVersion.V25_0)
+    rpc = NanoRpcTyped(url='http://localhost:7076')
 
     # Execute an RPC command
     block_count = await rpc.block_count()

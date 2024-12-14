@@ -5,12 +5,12 @@ with open("README.md", "r") as fh:
 
 setup(
     name='nanorpc',
-    version='0.1.5',
+    version='0.1.7',
     packages=find_packages(),
     install_requires=['aiohttp', 'asyncio'],
     python_requires='>=3.7',
     author='gr0vity',
-    url="https://github.com/gr0vity-dev/nanomock",
+    url="https://github.com/gr0vity-dev/nano-rpc-py",
     description='async nano rpc library with dynamic method generation per node version',
     long_description=long_description,
     long_description_content_type="text/markdown",
