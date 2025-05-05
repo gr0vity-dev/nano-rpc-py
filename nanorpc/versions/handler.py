@@ -16,10 +16,11 @@ class NodeVersion(IntEnum):
     V26_1 = 6  # no changes
     UNDOCUMENTED = 7  # undocumented.py
     V27_1 = 8  # v27_1.py
+    V28_0 = 9  # v28_0.py
 
 
 def _import_version_module(version: NodeVersion) -> Any:
-    module_name = f'nanorpc.versions.{version.name.lower()}'
+    module_name = f"nanorpc.versions.{version.name.lower()}"
     try:
         return importlib.import_module(module_name)
     except ImportError:
@@ -28,8 +29,8 @@ def _import_version_module(version: NodeVersion) -> Any:
 
 def _update_commands(commands: Dict[str, Any], module: Any) -> None:
     if module:
-        commands.update(getattr(module, 'COMMANDS', {}))
-        for command in getattr(module, 'REMOVALS', []):
+        commands.update(getattr(module, "COMMANDS", {}))
+        for command in getattr(module, "REMOVALS", []):
             commands.pop(command, None)
 
 

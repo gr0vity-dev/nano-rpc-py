@@ -1,11 +1,17 @@
 from nanorpc.client_dynamic import NanoRpc, NodeVersion
 
 
+# yapf: disable
 class NanoRpcTyped:
     def __init__(self, url, username=None, password=None, wrap_json=False):
         #
-        self.rpc = NanoRpc(url=url, username=username,
-                           password=password, node_version=NodeVersion.V27_1, wrap_json=wrap_json)
+        self.rpc = NanoRpc(
+            url=url,
+            username=username,
+            password=password,
+            node_version=NodeVersion.V28_0,
+            wrap_json=wrap_json,
+        )
 
     async def account_balance(self, account, include_only_confirmed=True):
         return await self.rpc.account_balance(account, include_only_confirmed=include_only_confirmed)
@@ -22,8 +28,8 @@ class NanoRpcTyped:
     async def account_get(self, key):
         return await self.rpc.account_get(key)
 
-    async def account_history(self, account, count=None, raw=None, head=None, offset=None, reverse=None, account_filter=None):
-        return await self.rpc.account_history(account, count=count, raw=raw, head=head, offset=offset, reverse=reverse, account_filter=account_filter)
+    async def account_history(self, account, count, raw=None, head=None, offset=None, reverse=None, account_filter=None, include_linked_account=None):
+        return await self.rpc.account_history(account, count=count, raw=raw, head=head, offset=offset, reverse=reverse, account_filter=account_filter, include_linked_account=include_linked_account)
 
     async def account_info(self, account, representative=None, weight=None, receivable=None, pending=None, include_confirmed=None):
         return await self.rpc.account_info(account, representative=representative, weight=weight, receivable=receivable, pending=pending, include_confirmed=include_confirmed)
@@ -49,7 +55,7 @@ class NanoRpcTyped:
     async def account_weight(self, account):
         return await self.rpc.account_weight(account)
 
-    async def accounts_balances(self, accounts, include_only_confirmed=None):
+    async def accounts_balances(self, accounts, include_only_confirmed=True):
         return await self.rpc.accounts_balances(accounts, include_only_confirmed=include_only_confirmed)
 
     async def accounts_create(self, wallet, count, work=None):
@@ -58,10 +64,10 @@ class NanoRpcTyped:
     async def accounts_frontiers(self, accounts):
         return await self.rpc.accounts_frontiers(accounts)
 
-    async def accounts_pending(self, accounts, count, threshold=None, source=None, include_active=None, sorting=None, include_only_confirmed=None):
+    async def accounts_pending(self, accounts, count, threshold=None, source=None, include_active=None, sorting=None, include_only_confirmed=True):
         return await self.rpc.accounts_pending(accounts, count, threshold=threshold, source=source, include_active=include_active, sorting=sorting, include_only_confirmed=include_only_confirmed)
 
-    async def accounts_receivable(self, accounts, count, threshold=None, source=None, include_active=None, sorting=None, include_only_confirmed=None):
+    async def accounts_receivable(self, accounts, count, threshold=None, source=None, include_active=None, sorting=None, include_only_confirmed=True):
         return await self.rpc.accounts_receivable(accounts, count, threshold=threshold, source=source, include_active=include_active, sorting=sorting, include_only_confirmed=include_only_confirmed)
 
     async def accounts_representatives(self, accounts):
@@ -91,14 +97,14 @@ class NanoRpcTyped:
     async def block_hash(self, block, json_block=None):
         return await self.rpc.block_hash(block, json_block=json_block)
 
-    async def block_info(self, hash, json_block=None):
-        return await self.rpc.block_info(hash, json_block=json_block)
+    async def block_info(self, hash, json_block=None, include_linked_account=None):
+        return await self.rpc.block_info(hash, json_block=json_block, include_linked_account=include_linked_account)
 
     async def blocks(self, hashes, json_block=None):
         return await self.rpc.blocks(hashes, json_block=json_block)
 
-    async def blocks_info(self, hashes, json_block=None, receivable=None, pending=None, source=None, receive_hash=None, include_not_found=None):
-        return await self.rpc.blocks_info(hashes, json_block=json_block, receivable=receivable, pending=pending, source=source, receive_hash=receive_hash, include_not_found=include_not_found)
+    async def blocks_info(self, hashes, json_block=None, pending=None, source=None, receive_hash=None, include_not_found=None, include_linked_account=None):
+        return await self.rpc.blocks_info(hashes, json_block=json_block, pending=pending, source=source, receive_hash=receive_hash, include_not_found=include_not_found, include_linked_account=include_linked_account)
 
     async def bootstrap(self, address, port, bypass_frontier_confirmation=None, id=None):
         return await self.rpc.bootstrap(address, port, bypass_frontier_confirmation=bypass_frontier_confirmation, id=id)
@@ -108,6 +114,12 @@ class NanoRpcTyped:
 
     async def bootstrap_lazy(self, hash, force=None, id=None):
         return await self.rpc.bootstrap_lazy(hash, force=force, id=id)
+
+    async def bootstrap_priorities(self, ):
+        return await self.rpc.bootstrap_priorities()
+
+    async def bootstrap_reset(self, ):
+        return await self.rpc.bootstrap_reset()
 
     async def bootstrap_status(self, ):
         return await self.rpc.bootstrap_status()
@@ -163,8 +175,20 @@ class NanoRpcTyped:
     async def key_expand(self, key):
         return await self.rpc.key_expand(key)
 
+    async def krai_from_raw(self, amount):
+        return await self.rpc.krai_from_raw(amount)
+
+    async def krai_to_raw(self, amount):
+        return await self.rpc.krai_to_raw(amount)
+
     async def ledger(self, account, count, representative=None, weight=None, receivable=None, pending=None, modified_since=None, sorting=None, threshold=None):
         return await self.rpc.ledger(account, count, representative=representative, weight=weight, receivable=receivable, pending=pending, modified_since=modified_since, sorting=sorting, threshold=threshold)
+
+    async def mrai_from_raw(self, amount):
+        return await self.rpc.mrai_from_raw(amount)
+
+    async def mrai_to_raw(self, amount):
+        return await self.rpc.mrai_to_raw(amount)
 
     async def nano_to_raw(self, amount):
         return await self.rpc.nano_to_raw(amount)
@@ -187,10 +211,10 @@ class NanoRpcTyped:
     async def peers(self, peer_details=None):
         return await self.rpc.peers(peer_details=peer_details)
 
-    async def pending(self, account, count=None, threshold=None, source=None, include_active=None, min_version=None, sorting=None, include_only_confirmed=None):
+    async def pending(self, account, count=None, threshold=None, source=None, include_active=None, min_version=None, sorting=None, include_only_confirmed=True):
         return await self.rpc.pending(account, count=count, threshold=threshold, source=source, include_active=include_active, min_version=min_version, sorting=sorting, include_only_confirmed=include_only_confirmed)
 
-    async def pending_exists(self, hash, include_active=None, include_only_confirmed=None):
+    async def pending_exists(self, hash, include_active=None, include_only_confirmed=True):
         return await self.rpc.pending_exists(hash, include_active=include_active, include_only_confirmed=include_only_confirmed)
 
     async def populate_backlog(self, ):
@@ -202,13 +226,19 @@ class NanoRpcTyped:
     async def pruned_exists(self, hash):
         return await self.rpc.pruned_exists(hash)
 
+    async def rai_from_raw(self, amount):
+        return await self.rpc.rai_from_raw(amount)
+
+    async def rai_to_raw(self, amount):
+        return await self.rpc.rai_to_raw(amount)
+
     async def raw_to_nano(self, amount):
         return await self.rpc.raw_to_nano(amount)
 
-    async def receivable(self, account, count=None, threshold=None, source=None, include_active=None, min_version=None, sorting=None, include_only_confirmed=None, offset=None):
+    async def receivable(self, account, count=None, threshold=None, source=None, include_active=None, min_version=None, sorting=None, include_only_confirmed=True, offset=None):
         return await self.rpc.receivable(account, count=count, threshold=threshold, source=source, include_active=include_active, min_version=min_version, sorting=sorting, include_only_confirmed=include_only_confirmed, offset=offset)
 
-    async def receivable_exists(self, hash, include_active=None, include_only_confirmed=None):
+    async def receivable_exists(self, hash, include_active=None, include_only_confirmed=True):
         return await self.rpc.receivable_exists(hash, include_active=include_active, include_only_confirmed=include_only_confirmed)
 
     async def receive(self, wallet, account, block):
@@ -350,8 +380,8 @@ class NanoRpcTyped:
     async def wallet_representative(self, wallet):
         return await self.rpc.wallet_representative(wallet)
 
-    async def wallet_representative_set(self, wallet, representative, work=None):
-        return await self.rpc.wallet_representative_set(wallet, representative, work=work)
+    async def wallet_representative_set(self, wallet, representative, work=None, update_existing_accounts=None):
+        return await self.rpc.wallet_representative_set(wallet, representative, work=work, update_existing_accounts=update_existing_accounts)
 
     async def wallet_republish(self, wallet, count=None):
         return await self.rpc.wallet_republish(wallet, count=count)

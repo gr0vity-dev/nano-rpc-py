@@ -6,3 +6,7 @@ dist/
 nanorpc.egg-info/
 debug**.py
 **_signatures.py
+venv
+condense_script.py
+condensed*.txt
+.venv
