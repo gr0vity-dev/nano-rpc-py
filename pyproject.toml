@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"] # Specify build dependencies
+build-backend = "setuptools.build_meta" # Specify the build backend
+
+[project]
+name = "nanorpc"
+version = "0.28.0" #
+authors = [
+    { name = "gr0vity" }   
+]
+description = "async nano rpc library with dynamic method generation per node version"
+readme = "README.md" # Specifies the readme file
+requires-python = ">=3.7"
+license = { text = "MIT License" } # Explicit license text or file = "LICENSE.txt"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License", # Retained for compatibility
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11", # Add newer versions if supported
+    "Programming Language :: Python :: 3.12", # Add newer versions if supported
+]
+dependencies = [
+    "aiohttp",
+]
+
+[project.urls]
+Homepage = "https://github.com/gr0vity-dev/nano-rpc-py"
+Repository = "https://github.com/gr0vity-dev/nano-rpc-py"
+# Add other URLs like documentation if desired
+
+[tool.setuptools.packages.find]
+include = ["nanorpc*"] 
