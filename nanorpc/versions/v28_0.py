@@ -21,6 +21,7 @@ COMMANDS = {
         "required": ["hashes"],
         "optional": [
             "json_block",
+            "receivable",
             "pending",  # Retained for backwards compat checking although 'receivable' preferred
             "source",
             "receive_hash",  # Added V24.0

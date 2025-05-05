@@ -103,8 +103,8 @@ class NanoRpcTyped:
     async def blocks(self, hashes, json_block=None):
         return await self.rpc.blocks(hashes, json_block=json_block)
 
-    async def blocks_info(self, hashes, json_block=None, pending=None, source=None, receive_hash=None, include_not_found=None, include_linked_account=None):
-        return await self.rpc.blocks_info(hashes, json_block=json_block, pending=pending, source=source, receive_hash=receive_hash, include_not_found=include_not_found, include_linked_account=include_linked_account)
+    async def blocks_info(self, hashes, json_block=None, receivable=None, pending=None, source=None, receive_hash=None, include_not_found=None, include_linked_account=None):
+        return await self.rpc.blocks_info(hashes, json_block=json_block, receivable=receivable, pending=pending, source=source, receive_hash=receive_hash, include_not_found=include_not_found, include_linked_account=include_linked_account)
 
     async def bootstrap(self, address, port, bypass_frontier_confirmation=None, id=None):
         return await self.rpc.bootstrap(address, port, bypass_frontier_confirmation=bypass_frontier_confirmation, id=id)
